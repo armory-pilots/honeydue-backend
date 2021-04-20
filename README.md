@@ -1,0 +1,1 @@
+# crossplane-opa-springboot-template
