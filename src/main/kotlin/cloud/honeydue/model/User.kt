@@ -1,5 +1,6 @@
 package cloud.honeydue.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.annotations.ColumnTransformer
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
@@ -14,6 +15,6 @@ class User(
     var firstName: String,
     @ColumnTransformer(read = "pgp_sym_decrypt(password, 'wandering-firefly-4506')", write = "pgp_sym_encrypt(?, 'wandering-firefly-4506')")
     val password: String,
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    val chores: Collection<Chore>?
+    @OneToMany(mappedBy = "user", cascade = arrayOf(CascadeType.ALL))
+    val chores: MutableList<Chore>?
     ) : AbstractJpaPersistable<Long>()

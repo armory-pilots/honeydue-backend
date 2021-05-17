@@ -15,8 +15,9 @@ CREATE TABLE chores
     "id"          serial8,
     "user_id"     int8         NOT NULL,
     "title"       varchar(255) NOT NULL,
-    "description" text         NOT NULL,
+    "description" text,
     "due_date"    date         NOT NULL DEFAULT CURRENT_DATE,
+    "completed"   boolean      NOT NULL DEFAULT false,
     PRIMARY KEY ("id"),
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
