@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.support.gradleApiMetadataFrom
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -21,6 +22,14 @@ publishing {
 				System.getenv("GITHUB_ACTOR")
 				System.getenv("GITHUB_TOKEN")
 			}
+		}
+	}
+	publications {
+		register("gpr", MavenPublication::class) {
+			from(components["java"])
+			group = "cloud.honeydue"
+			artifactId = "api"
+			version = "1.0.1"
 		}
 	}
 }
