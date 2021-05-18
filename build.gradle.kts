@@ -10,7 +10,12 @@ plugins {
 	kotlin("plugin.jpa") version "1.4.32"
 	kotlin("plugin.allopen") version "1.4.32"
 	kotlin("plugin.noarg") version "1.4.32"
-	id("maven-publish")
+	`maven-publish`
+}
+
+tasks.bootJar {
+	archiveFileName.set("honeydue-0.0.1-SNAPSHOT.jar")
+	mainClassName = "cloud.honeydue.HoneyDueApplication"
 }
 
 publishing {
