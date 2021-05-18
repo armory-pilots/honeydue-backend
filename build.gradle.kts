@@ -28,8 +28,7 @@ publishing {
 		register("gpr", MavenPublication::class) {
 			from(components["java"])
 			group = "cloud.honeydue"
-			artifactId = "api"
-			version = "1.0.1"
+			version = "0.0.1-SNAPSHOT"
 		}
 	}
 }
