@@ -1,2 +1,1 @@
-rootProject.name = "honeydue"
-include("libs")
+rootProject.name = "api"
