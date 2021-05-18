@@ -9,6 +9,20 @@ plugins {
 	kotlin("plugin.jpa") version "1.4.32"
 	kotlin("plugin.allopen") version "1.4.32"
 	kotlin("plugin.noarg") version "1.4.32"
+	id("maven-publish")
+}
+
+publishing {
+	repositories {
+		maven {
+			name = "GitHubPackages"
+			url = uri("https://maven.pkg.github.com/leefaus/honeydue-api")
+			credentials {
+				System.getenv("GITHUB_ACTOR")
+				System.getenv("GITHUB_TOKEN")
+			}
+		}
+	}
 }
 
 group = "cloud.honeydue"
