@@ -10,15 +10,17 @@ plugins {
 	kotlin("plugin.jpa") version "1.4.32"
 	kotlin("plugin.allopen") version "1.4.32"
 	kotlin("plugin.noarg") version "1.4.32"
+	`java-library`
 	`maven-publish`
 }
 
-tasks.bootJar {
-	archiveFileName.set("honeydue-0.0.1-SNAPSHOT.jar")
-	mainClassName = "cloud.honeydue.HoneyDueApplication"
-}
+group = "cloud.honeydue"
+version = "1.0.0-SNAPSHOT"
+
+
 
 publishing {
+
 	repositories {
 		maven {
 			name = "GitHubPackages"
@@ -30,21 +32,23 @@ publishing {
 		}
 	}
 	publications {
-		register("jar", MavenPublication::class) {
-			from(components["java"])
-			group = "cloud.honeydue"
-			artifactId = "honeydue"
-			version = "0.0.1-SNAPSHOT"
+		create<MavenPublication>("gpr") {
+			artifact(tasks.getByName("bootJar"))
 		}
 	}
 }
 
-group = "cloud.honeydue"
-version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
 	mavenCentral()
+}
+
+tasks.jar {
+	manifest {
+		attributes(mapOf("Implementation-Title" to project.name,
+						 "Implementation-Version" to project.version))
+	}
 }
 
 dependencies {
