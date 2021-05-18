@@ -25,9 +25,10 @@ publishing {
 		}
 	}
 	publications {
-		register("gpr", MavenPublication::class) {
+		register("jar", MavenPublication::class) {
 			from(components["java"])
 			group = "cloud.honeydue"
+			artifactId = "honeydue"
 			version = "0.0.1-SNAPSHOT"
 		}
 	}
