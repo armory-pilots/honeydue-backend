@@ -19,8 +19,8 @@ publishing {
 			name = "GitHubPackages"
 			url = uri("https://maven.pkg.github.com/leefaus/honeydue-api")
 			credentials {
-				System.getenv("GITHUB_ACTOR")
-				System.getenv("GITHUB_TOKEN")
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
 			}
 		}
 	}
