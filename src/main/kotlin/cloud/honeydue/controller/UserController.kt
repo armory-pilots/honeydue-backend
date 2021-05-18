@@ -20,6 +20,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/api/v1", produces = ["application/json"])
+@CrossOrigin(origins = ["*"])
 class UserController(@Autowired val userRepository: UserRepository) {
     var logger = LoggerFactory.getLogger(UserController::class.java)
     var secret = Base64.getDecoder().decode("NHi+orxnVHNclk17zy5oFc0znVXkUh3BOQwMEbP8308=")

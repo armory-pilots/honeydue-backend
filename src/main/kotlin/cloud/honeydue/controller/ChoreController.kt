@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1", produces = ["application/json"])
+@CrossOrigin(origins = ["*"])
 class ChoreController(@Autowired val userRepository: UserRepository, @Autowired val choreRepository: ChoreRepository) {
     var logger = LoggerFactory.getLogger(ChoreController::class.java)
     var signingKey = "NHi+orxnVHNclk17zy5oFc0znVXkUh3BOQwMEbP8308=".encodeToByteArray()
